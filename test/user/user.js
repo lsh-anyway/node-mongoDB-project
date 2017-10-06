@@ -1,5 +1,5 @@
-const crypto = require('crypto')
-const bcrypt = require('bcrypt')
+var crypto = require('crypto')
+var bcrypt = require('bcrypt')
 
 function getRandomString(len) {
   if (!len) len = 16
@@ -7,11 +7,11 @@ function getRandomString(len) {
   return crypto.randomBytes(Math.ceil(len / 2)).toString('hex')
 }
 
-const should = require('should')
-const app = require('../../app')
-const mongoose = require('mongoose')
-const User = require('../../app/models/user')
-const User = mongoose.model('User')
+var should = require('should')
+var app = require('../../app')
+var mongoose = require('mongoose')
+var User = require('../../app/models/user')
+var User = mongoose.model('User')
 
 var user
 

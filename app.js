@@ -9,6 +9,7 @@ const morgan = require('morgan')
 const mongoStore = require('connect-mongo')(session)
 const port = process.env.PORT || 3000
 const app = express()
+const fs = require('fs')
 const dbUrl = 'mongodb://localhost/imooc'
 const multipart = require('connect-multiparty')
 
@@ -17,10 +18,10 @@ mongoose.connect(dbUrl,{useMongoClient: true})
 
 // models loading
 let models_path = __dirname + '/app/models'
-let walk = function(path) {
+let walk = (path) => {
   fs
     .readdirSync(path)
-    .forEach(function(file) {
+    .forEach((file) => {
       let newPath = path + '/' + file
       let stat = fs.statSync(newPath)
 

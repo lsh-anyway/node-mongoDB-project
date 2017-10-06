@@ -34,10 +34,10 @@ module.exports = function (grunt) {
       }
     },
 
-    mochaTeat: {
+    mochaTest: {
       options: {
         reporter: 'spec'
-      }
+      },
       src: ['test/**/*.js']
     },
 
