@@ -57,6 +57,7 @@ app.use(session({
 }))
 
 var env = process.env.NODE_ENV || 'development'
+
 if ('development' === env) {
    app.set('showStackError', true)
    app.use(morgan(':method :url :status'))
