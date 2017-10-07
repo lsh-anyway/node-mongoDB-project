@@ -11,7 +11,6 @@ const port = process.env.PORT || 3000
 const app = express()
 const fs = require('fs')
 const dbUrl = 'mongodb://localhost/imooc'
-const multipart = require('connect-multiparty')
 
 mongoose.Promise = global.Promise
 mongoose.connect(dbUrl,{useMongoClient: true})
@@ -39,11 +38,18 @@ walk(models_path)
 
 app.set('views', './app/views/pages')
 app.set('view engine', 'jade')
-app.use(bodyParser.urlencoded({extended: true}))
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 app.use(cookieParser())
-app.use(multipart())
 app.use(session({
   secret: 'imooc',
+  resave: false,
+  saveUninitialized: true,
   store: new mongoStore({
     url: dbUrl,
     collection: 'sessions'

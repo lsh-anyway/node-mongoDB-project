@@ -4,6 +4,9 @@ const Movie = require('../app/controllers/movie')
 const Comment = require('../app/controllers/comment')
 const Category = require('../app/controllers/category')
 
+const multipart = require('connect-multiparty')
+const multipartMiddleware = multipart()
+
 module.exports = function (app) {
   // pre handle user
   app.use((req, res, next) => {
@@ -41,7 +44,7 @@ module.exports = function (app) {
   // admin update movie
   app.get('/admin/movie/update/:id', User.signinRequired, User.adminRequired, Movie.update)
   // admin post movie
-  app.post('/admin/movie', User.signinRequired, User.adminRequired, Movie.savePoster,Movie.save)
+  app.post('/admin/movie', multipartMiddleware, User.signinRequired, User.adminRequired, Movie.savePoster,Movie.save)
   // list page
   app.get('/admin/movie/list', User.signinRequired, User.adminRequired, Movie.list)
   // list delete movie

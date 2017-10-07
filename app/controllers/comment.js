@@ -1,4 +1,4 @@
-const Comment = require('../models/comment')
+var Comment = require('../models/comment')
 
 // admin post movie
 exports.save = (req, res) => {

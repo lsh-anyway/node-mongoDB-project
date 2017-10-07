@@ -1,6 +1,6 @@
 const Movie = require('../models/movie')
 const Category = require('../models/category')
-const Comment = require('../models/comment')
+var Comment = require('../models/comment')
 const _ = require('underscore')
 const fs = require('fs')
 const path = require('path')
